@@ -4,7 +4,7 @@ import './App.css';
 import { Button } from 'antd';
 import { Line } from '@ant-design/charts';
 
-function App() {
+const DemoLine = () => {
   const data = [
     { year: '1991', value: 3 },
     { year: '1992', value: 4 },
@@ -18,11 +18,25 @@ function App() {
   ];
   const config = {
     data,
-    height: 400,
     xField: 'year',
     yField: 'value',
+    point: {
+      shapeField: 'square',
+      sizeField: 4,
+    },
+    interaction: {
+      tooltip: {
+        marker: false,
+      },
+    },
+    style: {
+      lineWidth: 2,
+    },
   };
+  return <Line {...config} />;
+};
 
+function App() {
   return (
     <div className="App">
       <header className="App-header">
@@ -38,8 +52,8 @@ function App() {
         >
           Learn React
         </a>
-        <Button type="primary">Button</Button>
-        <Line {...config} />
+        <Button type="primary">antd-Button</Button>
+        <DemoLine />
       </header>
     </div>
   );
